@@ -2,6 +2,8 @@
   "use strict";
   function FileUploaderController(){
     this.options = {
+      header:null,
+      values:null,//static value to send to server -> [{key1:'my-value-1'}]
       selector:".js-file-uploader",//selector to upload
       type:'POST',//type to send information
       url:"",//url to send file,
@@ -76,6 +78,17 @@
       //if (!!file.type.match(/image.*/)) {}
     }
 
+    //if in options we have some stativ values to sendo to server
+    // we add this values to formdata
+    if(_self.options.values){
+      var _value = _self.options.values;
+      for (var prop in _value) {
+        if (Object.prototype.hasOwnProperty.call(_value,prop)){
+          formdata.append(prop, _value[prop]);
+        }
+      }
+    }
+
     _self.options.onFileChange(__args__);
 
     //https://davidwalsh.name/xmlhttprequest
@@ -93,7 +106,14 @@
         catch (e) {}
       }
     }
+
     request.open(_self.options.type, _self.options.url, true);
+
+    //add header info from options
+    if(_self.options.header){
+      request.setRequestHeader(_self.options.header.key, _self.options.header.value);
+    }
+
     request.send(formdata);
 
     // state changes

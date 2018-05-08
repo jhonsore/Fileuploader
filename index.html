@@ -33,6 +33,8 @@
 
       var _f = new FileUploader({
         url:"upload.php",
+        values:{key2:'my-value-2',key1:'my-value-1'}/*[{key1:'my-value-1'},{key2:'my-value-2'}]*/,
+        header:{key:"FILE-UPLOADER-HEADER",value:"my-value"},
         onInit:fileInit,
         onFileChange:fileChange,//on file change
         onRequestDone:fileRequestDone,// request done
