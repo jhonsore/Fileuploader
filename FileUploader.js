@@ -68,6 +68,7 @@
     var files = __args__.target.files;
     var i, len = files.length,file;
     var nameEl = __args__.target.name;
+    formdata.append("fileuploadername", nameEl);
 
     for ( i = 0 ; i < len; i++ ) {
       file = files[i];
@@ -97,6 +98,7 @@
 
     // state changes
     request.onreadystatechange = function(__event__) {
+
       if(request.readyState === 4) { // done
         _self.options.onRequestDone(__event__);
         switch (request.status){

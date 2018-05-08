@@ -1,9 +1,9 @@
 <?php
-
-foreach ($_FILES["files"]["error"] as $key => $error) {
+$file = $_POST['fileuploadername'];//we receive by post the file name
+foreach ($_FILES[$file]["error"] as $key => $error) {
   if ($error == UPLOAD_ERR_OK) {
-    $name = $_FILES["files"]["name"][$key];
-    move_uploaded_file( $_FILES["files"]["tmp_name"][$key], "uploads/" . $_FILES['files']['name'][$key]);
+    $name = $_FILES[$file]["name"][$key];
+    move_uploaded_file( $_FILES[$file]["tmp_name"][$key], "uploads/" . $_FILES[$file]['name'][$key]);
   }
 }
 
