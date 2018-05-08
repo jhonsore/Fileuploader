@@ -7,14 +7,14 @@
       selector:".js-file-uploader",//selector to upload
       type:'POST',//type to send information
       url:"",//url to send file,
-      onInit:null,//init element
-      onFileChange:null,//on file change
-      onRequestDone:null,// request done
-      onRequestOpen:null,//request open
-      onRequestProgress:null,//request progress
-      onRequestLoad:null,//request load
-      onRequestError:null,//request error
-      onRequestAbort:null//request abort
+      onInit:function(){},//init element
+      onFileChange:function(){},//on file change
+      onRequestDone:function(){},// request done
+      onRequestOpen:function(){},//request open
+      onRequestProgress:function(){},//request progress
+      onRequestLoad:function(){},//request load
+      onRequestError:function(){},//request error
+      onRequestAbort:function(){}//request abort
     }
     // Create options by extending defaults with the passed in argugments
     /*
